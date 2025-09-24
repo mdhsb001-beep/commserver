@@ -28,6 +28,8 @@ import scraperRouter from "./routes/scraper.routes.js";
 import postsRouter from "./routes/post.routes.js";
 import userRouter from "./routes/user.routes.js";
 import communityRouter from "./routes/community.routes.js";
+import userScrapingRouter from "./routes/userScraping.routes.js";
+import commentGenerationRouter from "./routes/commentGeneration.routes.js";
 import { seedUsers } from "./data/seedUsers.js";
 
 app.get("/api/v1/seed", seedDatabase);
@@ -39,5 +41,7 @@ app.use("/api/v1/follows", followRouter);
 app.use("/api/v1/bookmarks", bookmarkRouter);
 app.use("/api/v1/scraper", scraperRouter);
 app.use("/api/v1/community", communityRouter);
+app.use("/api/v1/user-scraping", userScrapingRouter);
+app.use("/api/v1/comment-generation", commentGenerationRouter);
 
 export { app };

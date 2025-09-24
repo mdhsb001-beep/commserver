@@ -68,54 +68,9 @@ class MediumScraper {
    */
   getAuthenticMediumData(count) {
     const authenticPosts = [];
-    const articleTopics = [
-      "Building a Sustainable Business Model",
-      "Lessons from Scaling a Remote Team",
-      "The Psychology of Customer Decision Making",
-      "Data-Driven Product Development",
-      "Creating Authentic Brand Connections",
-      "Navigating Startup Funding Challenges",
-      "The Future of Work in Tech",
-      "Building Resilient Business Operations"
-    ];
-
-    const realAuthors = [
-      "Sarah Chen", "Michael Rodriguez", "Emma Thompson", "David Kim",
-      "Lisa Wang", "James Wilson", "Anna Kowalski", "Carlos Martinez"
-    ];
-
-    for (let i = 0; i < Math.min(count, articleTopics.length); i++) {
-      const topic = articleTopics[i];
-      const author = realAuthors[i % realAuthors.length];
-      
-      const mockPost = {
-        id: `medium_auth_${Date.now()}_${i}`,
-        title: topic,
-        content: `${topic}: In this comprehensive analysis, I explore the key factors that contribute to success in this area. Based on extensive research and real-world experience, here are the critical insights every professional should understand. The landscape is evolving rapidly, and staying ahead requires both strategic thinking and practical implementation.`,
-        url: `https://medium.com/@${author.toLowerCase().replace(' ', '')}/article-${Date.now()}${i}`,
-        author: author,
-        createdAt: new Date(Date.now() - Math.random() * 14 * 24 * 60 * 60 * 1000), // Last 2 weeks
-        likes: Math.floor(Math.random() * 500) + 50,
-        comments: Math.floor(Math.random() * 50) + 8,
-        shares: Math.floor(Math.random() * 25) + 5,
-        views: Math.floor(Math.random() * 5000) + 500,
-        thumbnail: `https://picsum.photos/800/400?random=${i}`,
-        mediaUrls: [{
-          type: "image",
-          url: `https://picsum.photos/800/400?random=${i}`,
-        }],
-        tags: this.generateArticleTags(topic),
-        platform: "medium",
-        readingTime: Math.floor(Math.random() * 8) + 3, // 3-10 minutes
-        publicationName: i % 3 === 0 ? "Business Insights" : null,
-        verified: Math.random() > 0.5,
-      };
-
-      // Apply authenticity filters
-      if (this.isAuthenticMediumPost(mockPost)) {
-        authenticPosts.push(mockPost);
-      }
-    }
+    // Remove all mock/static content generation
+    // This method should only return scraped content from actual Medium API calls
+    console.log('Authentic mock data generation removed - use actual Medium scraping only');
 
     return authenticPosts;
   }

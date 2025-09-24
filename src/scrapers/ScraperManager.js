@@ -8,6 +8,7 @@ import { MediumScraper } from "./platforms/MediumScraper.js";
 import { ScrapingUtils } from "./utils/ScrapingUtils.js";
 import { ContentProcessor } from "./utils/ContentProcessor.js";
 import { ContentValidator } from "./utils/ContentValidator.js";
+import { CommentGenerationService } from "../services/CommentGenerationService.js";
 
 class ScraperManager {
   constructor() {
@@ -20,6 +21,7 @@ class ScraperManager {
     this.utils = new ScrapingUtils();
     this.contentProcessor = new ContentProcessor();
     this.contentValidator = new ContentValidator();
+    this.commentGenerationService = new CommentGenerationService();
   }
 
   /**
@@ -342,6 +344,7 @@ class ScraperManager {
     users
   ) {
     let postsCreated = 0;
+    const createdPostIds = [];
 
     for (const content of authenticContent) {
       try {
@@ -363,7 +366,7 @@ class ScraperManager {
           owner: randomUser._id,
           engagementMetrics: {
             likes: content.likes || 0,
-            comments: content.comments || 0,
+            comments: 0, // Remove original comment count
             shares: content.shares || 0,
             views: content.views || 0,
           },
@@ -384,6 +387,7 @@ class ScraperManager {
         });
 
         postsCreated++;
+        createdPostIds.push(post._id);
         console.log(
           `✅ Created authentic post: ${post.title.substring(0, 50)}...`
         );
@@ -392,6 +396,16 @@ class ScraperManager {
           `Error creating post from ${content.id}:`,
           postError.message
         );
+      }
+    }
+
+    // Generate comments for newly created posts
+    if (createdPostIds.length > 0) {
+      try {
+        console.log(`🔄 Generating comments for ${createdPostIds.length} newly created authentic posts...`);
+        await this.commentGenerationService.generateCommentsForPosts(createdPostIds);
+      } catch (error) {
+        console.error('Error generating comments for new authentic posts:', error.message);
       }
     }
 
@@ -408,6 +422,7 @@ class ScraperManager {
     users
   ) {
     let postsCreated = 0;
+    const createdPostIds = [];
 
     for (const content of scrapedContent) {
       try {
@@ -451,7 +466,7 @@ class ScraperManager {
           owner: randomUser._id,
           engagementMetrics: {
             likes: content.likes || 0,
-            comments: content.comments || 0,
+            comments: 0, // Remove original comment count
             shares: content.shares || 0,
             views: content.views || 0,
           },
@@ -468,12 +483,23 @@ class ScraperManager {
         });
 
         postsCreated++;
+        createdPostIds.push(post._id);
         console.log(`✅ Created post: ${post.title.substring(0, 50)}...`);
       } catch (postError) {
         console.error(
           `Error creating post from ${content.id}:`,
           postError.message
         );
+      }
+    }
+
+    // Generate comments for newly created posts
+    if (createdPostIds.length > 0) {
+      try {
+        console.log(`🔄 Generating comments for ${createdPostIds.length} newly created posts...`);
+        await this.commentGenerationService.generateCommentsForPosts(createdPostIds);
+      } catch (error) {
+        console.error('Error generating comments for new posts:', error.message);
       }
     }
 

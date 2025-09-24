@@ -37,51 +37,9 @@ class TwitterScraper {
    */
   getAuthenticTwitterData(maxPosts, keywords) {
     const authenticPosts = [];
-    const realBusinessTopics = [
-      "startup funding challenges", "remote work productivity", "team leadership lessons",
-      "customer feedback insights", "product development journey", "market research findings",
-      "business pivot story", "scaling team culture", "user acquisition strategies",
-      "revenue growth tactics", "industry trend analysis", "competitive landscape"
-    ];
-
-    const authenticAuthors = [
-      "sarah_founder", "mike_ceo", "tech_leader_anna", "startup_advisor_john",
-      "business_coach_lisa", "growth_expert_david", "marketing_pro_emma"
-    ];
-
-    for (let i = 0; i < Math.min(maxPosts, 15); i++) {
-      const topic = realBusinessTopics[Math.floor(Math.random() * realBusinessTopics.length)];
-      const author = authenticAuthors[Math.floor(Math.random() * authenticAuthors.length)];
-      
-      const mockPost = {
-        id: `twitter_auth_${Date.now()}_${i}`,
-        title: `Real insights on ${topic}`,
-        content: `After 3 years working on ${topic}, here's what I've learned: The key is consistency and genuine customer focus. What's been your experience? #business #startup #authentic`,
-        url: `https://twitter.com/${author}/status/${Date.now()}${i}`,
-        author: author,
-        createdAt: new Date(Date.now() - Math.random() * 3 * 24 * 60 * 60 * 1000), // Last 3 days
-        likes: Math.floor(Math.random() * 200) + 15, // Realistic engagement
-        comments: Math.floor(Math.random() * 25) + 3,
-        shares: Math.floor(Math.random() * 15) + 1,
-        views: Math.floor(Math.random() * 2000) + 100,
-        thumbnail: null,
-        mediaUrls: [],
-        tags: ["business", "startup", "authentic", topic.replace(/\s+/g, "")],
-        platform: "twitter",
-        isThread: Math.random() > 0.8,
-        retweetCount: Math.floor(Math.random() * 50),
-        verified: Math.random() > 0.7,
-        followerCount: Math.floor(Math.random() * 10000) + 500,
-      };
-
-      // Apply authenticity filters
-      if (this.isAuthenticTwitterPost(mockPost)) {
-        // Filter by keywords if provided
-        if (keywords.length === 0 || this.matchesKeywords(mockPost, keywords)) {
-          authenticPosts.push(mockPost);
-        }
-      }
-    }
+    // Remove all mock/static content generation
+    // This method should only return scraped content from actual Twitter API calls
+    console.log('Authentic mock data generation removed - use actual Twitter API scraping only');
 
     return authenticPosts;
   }
@@ -144,38 +102,9 @@ class TwitterScraper {
    */
   getMockTwitterData(maxPosts, keywords) {
     const mockPosts = [];
-    const businessTopics = [
-      "startup funding", "entrepreneurship", "business strategy", "marketing tips",
-      "SaaS growth", "e-commerce trends", "business automation", "leadership",
-      "productivity hacks", "business networking", "sales strategies", "customer success"
-    ];
-
-    for (let i = 0; i < Math.min(maxPosts, 20); i++) {
-      const topic = businessTopics[Math.floor(Math.random() * businessTopics.length)];
-      const mockPost = {
-        id: `twitter_${Date.now()}_${i}`,
-        title: `Insights on ${topic}`,
-        content: `Great discussion about ${topic}. Here are some key takeaways that every entrepreneur should know. Thread 🧵 #business #startup #entrepreneur`,
-        url: `https://twitter.com/businessuser/status/${Date.now()}${i}`,
-        author: `business_expert_${i % 5 + 1}`,
-        createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000),
-        likes: Math.floor(Math.random() * 1000) + 10,
-        comments: Math.floor(Math.random() * 100) + 5,
-        shares: Math.floor(Math.random() * 50) + 2,
-        views: Math.floor(Math.random() * 10000) + 100,
-        thumbnail: null,
-        mediaUrls: [],
-        tags: ["business", "startup", "entrepreneur", topic.replace(" ", "")],
-        platform: "twitter",
-        isThread: Math.random() > 0.7,
-        retweetCount: Math.floor(Math.random() * 200),
-      };
-
-      // Filter by keywords if provided
-      if (keywords.length === 0 || this.matchesKeywords(mockPost, keywords)) {
-        mockPosts.push(mockPost);
-      }
-    }
+    // Remove all mock/static content generation
+    // This method should only return scraped content from actual Twitter API calls
+    console.log('Mock data generation removed - use actual Twitter API scraping only');
 
     return mockPosts;
   }

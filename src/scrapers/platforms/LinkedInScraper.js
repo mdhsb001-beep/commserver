@@ -33,51 +33,9 @@ class LinkedInScraper {
    */
   getAuthenticLinkedInData(maxPosts, keywords) {
     const authenticPosts = [];
-    const professionalTopics = [
-      "Leadership in Remote Teams", "Building Startup Culture", "Customer Success Strategies",
-      "Product Management Insights", "Sales Team Development", "Marketing ROI Analysis",
-      "Operational Efficiency", "Team Communication", "Strategic Planning", "Industry Partnerships"
-    ];
-
-    const realCompanies = [
-      "TechStartup Inc", "GrowthCorp", "InnovateNow", "ScaleUp Solutions", "BusinessFirst",
-      "MarketLeader Co", "CustomerFocus Ltd", "StrategyWorks", "TeamBuilder Inc", "ResultsDriven"
-    ];
-
-    for (let i = 0; i < Math.min(maxPosts, 20); i++) {
-      const topic = professionalTopics[Math.floor(Math.random() * professionalTopics.length)];
-      const company = realCompanies[Math.floor(Math.random() * realCompanies.length)];
-      
-      const mockPost = {
-        id: `linkedin_auth_${Date.now()}_${i}`,
-        title: topic,
-        content: `${topic}: After implementing this approach at ${company}, we saw significant improvements in team performance and customer satisfaction. Key takeaways: 1) Focus on clear communication 2) Set measurable goals 3) Regular feedback loops. What strategies have worked for your team? #leadership #business #teamwork`,
-        url: `https://linkedin.com/posts/business-leader-${i}_${topic.replace(/\s+/g, '-').toLowerCase()}-activity-${Date.now()}${i}`,
-        author: `Business Leader ${i % 8 + 1}`,
-        authorTitle: `VP of Operations at ${company}`,
-        createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000), // Last week
-        likes: Math.floor(Math.random() * 300) + 25,
-        comments: Math.floor(Math.random() * 30) + 5,
-        shares: Math.floor(Math.random() * 15) + 2,
-        views: Math.floor(Math.random() * 3000) + 200,
-        thumbnail: null,
-        mediaUrls: [],
-        tags: this.generateProfessionalTags(topic),
-        platform: "linkedin",
-        company: company,
-        authorConnections: Math.floor(Math.random() * 5000) + 1000,
-        postType: "post",
-        verified: Math.random() > 0.6,
-      };
-
-      // Apply authenticity filters
-      if (this.isAuthenticLinkedInPost(mockPost)) {
-        // Filter by keywords if provided
-        if (keywords.length === 0 || this.matchesKeywords(mockPost, keywords)) {
-          authenticPosts.push(mockPost);
-        }
-      }
-    }
+    // Remove all mock/static content generation
+    // This method should only return scraped content from actual LinkedIn API calls
+    console.log('Authentic mock data generation removed - use actual LinkedIn API scraping only');
 
     return authenticPosts;
   }
@@ -166,48 +124,9 @@ class LinkedInScraper {
    */
   getMockLinkedInData(maxPosts, keywords) {
     const mockPosts = [];
-    const businessTopics = [
-      "Leadership Lessons", "Startup Journey", "Business Growth", "Team Management",
-      "Industry Insights", "Professional Development", "Networking Tips", "Innovation",
-      "Digital Transformation", "Customer Success", "Sales Excellence", "Marketing Strategy",
-      "Entrepreneurial Mindset", "Business Analytics", "Workplace Culture", "Career Advice"
-    ];
-
-    const companies = [
-      "TechCorp", "InnovateLab", "BusinessPro", "StartupHub", "GrowthCo",
-      "DigitalFirst", "ScaleUp", "VentureWorks", "BusinessMind", "ProConsult"
-    ];
-
-    for (let i = 0; i < Math.min(maxPosts, 25); i++) {
-      const topic = businessTopics[Math.floor(Math.random() * businessTopics.length)];
-      const company = companies[Math.floor(Math.random() * companies.length)];
-      
-      const mockPost = {
-        id: `linkedin_${Date.now()}_${i}`,
-        title: topic,
-        content: `${topic}: Sharing insights from my experience at ${company}. Here are the key takeaways that have shaped my professional journey and might help others in similar situations. What are your thoughts on this approach? #business #leadership #professional`,
-        url: `https://linkedin.com/posts/business-expert-${i}_${topic.replace(/\s+/g, '-').toLowerCase()}-activity-${Date.now()}${i}`,
-        author: `Business Expert ${i % 10 + 1}`,
-        authorTitle: `CEO at ${company}`,
-        createdAt: new Date(Date.now() - Math.random() * 14 * 24 * 60 * 60 * 1000),
-        likes: Math.floor(Math.random() * 500) + 20,
-        comments: Math.floor(Math.random() * 50) + 3,
-        shares: Math.floor(Math.random() * 25) + 1,
-        views: Math.floor(Math.random() * 5000) + 200,
-        thumbnail: null,
-        mediaUrls: this.generateMockMedia(),
-        tags: this.generateBusinessTags(topic),
-        platform: "linkedin",
-        company: company,
-        authorConnections: Math.floor(Math.random() * 10000) + 500,
-        postType: Math.random() > 0.7 ? "article" : "post",
-      };
-
-      // Filter by keywords if provided
-      if (keywords.length === 0 || this.matchesKeywords(mockPost, keywords)) {
-        mockPosts.push(mockPost);
-      }
-    }
+    // Remove all mock/static content generation
+    // This method should only return scraped content from actual LinkedIn API calls
+    console.log('Mock data generation removed - use actual LinkedIn API scraping only');
 
     return mockPosts;
   }
